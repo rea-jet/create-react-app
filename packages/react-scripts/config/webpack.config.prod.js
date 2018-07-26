@@ -305,7 +305,9 @@ module.exports = {
           // The preset includes JSX, Flow, TypeScript and some ESnext features.
           {
             test: /\.(js|mjs|jsx|ts|tsx)$/,
-            include: paths.appSrc,
+            // comment out include, otherwise webpacks behaves strangely
+            // include: paths.appSrc,
+            exclude: /node_modules\/(?!(@rea-jet\/.*)\/).*/,
 
             loader: require.resolve('babel-loader'),
             options: {
@@ -329,6 +331,12 @@ module.exports = {
               ]),
               // @remove-on-eject-end
               plugins: [
+                [
+                  require.resolve('@babel/plugin-proposal-decorators'),
+                  { legacy: true },
+                ],
+                require.resolve('@babel/plugin-proposal-function-bind'),
+                require.resolve('babel-plugin-emotion'),
                 [
                   require.resolve('babel-plugin-named-asset-import'),
                   {
