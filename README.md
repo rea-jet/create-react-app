@@ -1,3 +1,23 @@
+# @rea-jet/react-scripts (fork)
+
+currently based on `react-scripts@2.1.x`
+
+⚠️ This is no fork of `create-react-app` but just `react-scripts`.
+It currently changes the following things compared to facebooks' `react-scripts`:
+
+1.  Adds babel plugins
+
+    - [@babel/plugin-proposal-decorators](https://www.npmjs.com/package/@babel/plugin-proposal-decorators)
+    - [@babel/plugin-proposal-function-bind](https://www.npmjs.com/package/@babel/plugin-proposal-function-bind)
+
+1.  Changes webpack config to transpile all node_modules in `@rea-jet` namespace
+
+## Use with create-react-app
+
+```
+create-react-app my-app --scripts-version @rea-jet/react-scripts
+```
+
 # Create React App [![Build Status](https://travis-ci.org/facebook/create-react-app.svg?branch=master)](https://travis-ci.org/facebook/create-react-app)
 
 Create React apps with no build configuration.
