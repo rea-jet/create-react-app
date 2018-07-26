@@ -1,6 +1,6 @@
 {
-  "name": "react-scripts",
-  "version": "1.1.4",
+  "name": "@rea-jet/react-scripts",
+  "version": "1.1.4-0",
   "description": "Configuration and scripts for Create React App.",
   "repository": "facebookincubator/create-react-app",
   "license": "MIT",
