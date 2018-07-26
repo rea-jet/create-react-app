@@ -163,12 +163,18 @@ module.exports = {
           // Process JS with Babel.
           {
             test: /\.(js|jsx|mjs)$/,
-            include: paths.appSrc,
+            // comment out include, otherwise webpacks behaves strangely
+            // include: paths.appSrc,
+            exclude: /node_modules\/(?!(@rea-jet\/.*)\/).*/,
             loader: require.resolve('babel-loader'),
             options: {
               // @remove-on-eject-begin
               babelrc: false,
               presets: [require.resolve('babel-preset-react-app')],
+              plugins: [
+                require.resolve('babel-plugin-transform-function-bind'),
+                require.resolve('babel-plugin-transform-decorators-legacy'),
+              ],
               // @remove-on-eject-end
               // This is a feature of `babel-loader` for webpack (not Babel itself).
               // It enables caching results in ./node_modules/.cache/babel-loader/
