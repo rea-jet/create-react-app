@@ -56,7 +56,7 @@ module.exports = (resolve, rootDir, isEjecting) => {
       ),
     },
     transformIgnorePatterns: [
-      '[/\\\\]node_modules[/\\\\](?!(@rea-jet\\/.*)\\/).+\\.(js|jsx|ts|tsx)$',
+      '[/\\\\]node_modules[/\\\\](?!(@rea-jet[/\\\\].*)[/\\\\]).+\\.(js|jsx|ts|tsx)$',
       '^.+\\.module\\.(css|sass|scss)$',
     ],
     moduleNameMapper: {

@@ -310,7 +310,7 @@ module.exports = {
             test: /\.(js|mjs|jsx|ts|tsx)$/,
             // comment out include, otherwise webpacks behaves strangely
             // include: paths.appSrc,
-            exclude: /node_modules\/(?!(@rea-jet\/.*)\/).*/,
+            exclude: /node_modules[\/\\\\](?!(@rea-jet[\/\\\\].*)[\/\\\\]).*/,
 
             loader: require.resolve('babel-loader'),
             options: {
