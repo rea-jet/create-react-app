@@ -5,10 +5,9 @@ currently based on `react-scripts@2.1.x`
 ⚠️ This is no fork of `create-react-app` but just `react-scripts`.
 It currently changes the following things compared to facebooks' `react-scripts`:
 
-1.  Adds babel plugins
+1.  Adds babel preset
 
-    - [@babel/plugin-proposal-decorators](https://www.npmjs.com/package/@babel/plugin-proposal-decorators)
-    - [@babel/plugin-proposal-function-bind](https://www.npmjs.com/package/@babel/plugin-proposal-function-bind)
+    - [@rea-jet/babel-preset-rea](https://www.npmjs.com/package/@rea-jet/babel-preset-rea)
 
 1.  Changes webpack config to transpile all node_modules in `@rea-jet` namespace
 
