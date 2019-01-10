@@ -25,8 +25,10 @@
   "types": "./lib/react-app.d.ts",
   "dependencies": {
     "@babel/core": "7.1.0",
+    "@babel/plugin-proposal-class-properties": "7.1.0",
     "@babel/plugin-proposal-decorators": "7.1.2",
     "@babel/plugin-proposal-function-bind": "7.0.0",
+    "@babel/plugin-transform-exponentiation-operator": "7.2.0",
     "@svgr/webpack": "2.4.1",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "9.0.0",

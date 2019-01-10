@@ -261,8 +261,10 @@ module.exports = {
               plugins: [
                 [
                   require.resolve('@babel/plugin-proposal-decorators'),
-                  { legacy: true },
+                  { decoratorsBeforeExport: true },
                 ],
+                require.resolve('@babel/plugin-proposal-class-properties'),
+                require.resolve('@babel/plugin-transform-exponentiation-operator'),
                 require.resolve('@babel/plugin-proposal-function-bind'),
                 require.resolve('babel-plugin-emotion'),
                 [
