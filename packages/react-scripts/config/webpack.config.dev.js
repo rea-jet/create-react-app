@@ -245,7 +245,10 @@ module.exports = {
               // @remove-on-eject-begin
               babelrc: false,
               configFile: false,
-              presets: [require.resolve('babel-preset-react-app')],
+              presets: [
+                require.resolve('babel-preset-react-app'),
+                require.resolve('@rea-jet/babel-preset-rea')
+              ],
               // Make sure we have a unique cache identifier, erring on the
               // side of caution.
               // We remove this when the user ejects because the default
@@ -258,26 +261,7 @@ module.exports = {
                 'react-scripts',
               ]),
               // @remove-on-eject-end
-              plugins: [
-                [
-                  require.resolve('@babel/plugin-proposal-decorators'),
-                  { decoratorsBeforeExport: true },
-                ],
-                require.resolve('@babel/plugin-proposal-class-properties'),
-                require.resolve('@babel/plugin-transform-exponentiation-operator'),
-                require.resolve('@babel/plugin-proposal-function-bind'),
-                require.resolve('babel-plugin-emotion'),
-                [
-                  require.resolve('babel-plugin-named-asset-import'),
-                  {
-                    loaderMap: {
-                      svg: {
-                        ReactComponent: '@svgr/webpack?-prettier,-svgo![path]',
-                      },
-                    },
-                  },
-                ],
-              ],
+              plugins: [],
               // This is a feature of `babel-loader` for webpack (not Babel itself).
               // It enables caching results in ./node_modules/.cache/babel-loader/
               // directory for faster rebuilds.
