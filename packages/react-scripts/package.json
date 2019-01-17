@@ -26,6 +26,7 @@
   "dependencies": {
     "@babel/core": "7.1.0",
     "@babel/plugin-proposal-class-properties": "7.1.0",
+    "@emotion/babel-preset-css-prop": "10.0.6",
     "@rea-jet/babel-preset-rea": "1",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "9.0.0",
