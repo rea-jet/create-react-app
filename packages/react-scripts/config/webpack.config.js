@@ -345,7 +345,7 @@ module.exports = function(webpackEnv) {
             // The preset includes JSX, Flow, TypeScript, and some ESnext features.
             {
               test: /\.(js|mjs|jsx|ts|tsx)$/,
-              include: paths.appSrc,
+              exclude: /node_modules[\/\\\\](?!(@rea-jet[\/\\\\].*)[\/\\\\]).*/,
               loader: require.resolve('babel-loader'),
               options: {
                 customize: require.resolve(
@@ -354,7 +354,16 @@ module.exports = function(webpackEnv) {
                 // @remove-on-eject-begin
                 babelrc: false,
                 configFile: false,
-                presets: [require.resolve('babel-preset-react-app')],
+                presets: [
+                  require.resolve('babel-preset-react-app'),
+                  [
+                    require.resolve('@emotion/babel-preset-css-prop'),
+                    {
+                      autoLabel: true,
+                      labelFormat: '[local]',
+                    },
+                  ],
+                ],
                 // Make sure we have a unique cache identifier, erring on the
                 // side of caution.
                 // We remove this when the user ejects because the default
