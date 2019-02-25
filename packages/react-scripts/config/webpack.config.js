@@ -382,6 +382,7 @@ module.exports = function(webpackEnv) {
                 ),
                 // @remove-on-eject-end
                 plugins: [
+                  'babel-plugin-react-docgen',
                   [
                     require.resolve('babel-plugin-named-asset-import'),
                     {
