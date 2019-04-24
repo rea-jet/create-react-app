@@ -37,6 +37,10 @@ const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin'
 const getCacheIdentifier = require('react-dev-utils/getCacheIdentifier');
 // @remove-on-eject-end
 const createEnvironmentHash = require('./webpack/persistentCache/createEnvironmentHash');
+const postcssNormalize = require('postcss-normalize');
+
+const appPackageJson = require(paths.appPackageJson);
+const CompressionPlugin = require('compression-webpack-plugin');
 
 // Source maps are resource heavy and can cause out of memory issue for large source files.
 const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false';
@@ -794,6 +798,9 @@ module.exports = function (webpackEnv) {
             },
           },
         }),
+      new CompressionPlugin({
+        filename: '[path].gz',
+      }),
     ].filter(Boolean),
     // Turn off performance processing because we utilize
     // our own hints via the FileSizeReporter
