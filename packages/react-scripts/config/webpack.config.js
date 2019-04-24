@@ -34,6 +34,7 @@ const typescriptFormatter = require('react-dev-utils/typescriptFormatter');
 // @remove-on-eject-begin
 const getCacheIdentifier = require('react-dev-utils/getCacheIdentifier');
 // @remove-on-eject-end
+const CompressionPlugin = require('compression-webpack-plugin');
 
 // Source maps are resource heavy and can cause out of memory issue for large source files.
 const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false';
@@ -651,6 +652,9 @@ module.exports = function(webpackEnv) {
           watch: paths.appSrc,
           silent: true,
           formatter: typescriptFormatter,
+        }),
+        new CompressionPlugin({
+          filename: '[path].gz',
         }),
     ].filter(Boolean),
     // Some libraries import Node modules but don't use them in the browser.
