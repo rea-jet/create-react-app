@@ -633,6 +633,7 @@ module.exports = function(webpackEnv) {
           async: false,
           checkSyntacticErrors: true,
           tsconfig: paths.appTsConfig,
+          ignoreDiagnostics: [2321],
           compilerOptions: {
             module: 'esnext',
             moduleResolution: 'node',
