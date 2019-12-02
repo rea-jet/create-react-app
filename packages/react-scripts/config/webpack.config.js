@@ -614,7 +614,8 @@ module.exports = function(webpackEnv) {
         new WorkboxWebpackPlugin.GenerateSW({
           clientsClaim: true,
           exclude: [/\.map$/, /asset-manifest\.json$/],
-          importWorkboxFrom: 'cdn',
+          importWorkboxFrom: 'local',
+          importScripts: ['rea-service-worker.js'],
           navigateFallback: publicUrl + '/index.html',
           navigateFallbackBlacklist: [
             // Exclude URLs starting with /_, as they're likely an API call
@@ -653,9 +654,9 @@ module.exports = function(webpackEnv) {
           silent: true,
           formatter: typescriptFormatter,
         }),
-        new CompressionPlugin({
-          filename: '[path].gz',
-        }),
+      new CompressionPlugin({
+        filename: '[path].gz',
+      }),
     ].filter(Boolean),
     // Some libraries import Node modules but don't use them in the browser.
     // Tell Webpack to provide empty mocks for them so importing them works.
