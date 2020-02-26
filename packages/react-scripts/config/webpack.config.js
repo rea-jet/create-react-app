@@ -51,6 +51,13 @@ const cssModuleRegex = /\.module\.css$/;
 const sassRegex = /\.(scss|sass)$/;
 const sassModuleRegex = /\.module\.(scss|sass)$/;
 
+/* REA CUSTOM WEBPACK CONFIG OVERRIDE PATCH */
+let configOverwrite = null;
+try {
+  const { webpack } = require(path.resolve(paths.appPath, 'config-override'));
+  configOverwrite = webpack;
+} catch (e) {}
+
 // This is the production and development configuration.
 // It is focused on developer experience, fast rebuilds, and a minimal bundle.
 module.exports = function(webpackEnv) {
@@ -124,7 +131,7 @@ module.exports = function(webpackEnv) {
     return loaders;
   };
 
-  return {
+  const config = {
     mode: isEnvProduction ? 'production' : isEnvDevelopment && 'development',
     // Stop compilation early in production
     bail: isEnvProduction,
@@ -653,9 +660,9 @@ module.exports = function(webpackEnv) {
           silent: true,
           formatter: typescriptFormatter,
         }),
-        new CompressionPlugin({
-          filename: '[path].gz',
-        }),
+      new CompressionPlugin({
+        filename: '[path].gz',
+      }),
     ].filter(Boolean),
     // Some libraries import Node modules but don't use them in the browser.
     // Tell Webpack to provide empty mocks for them so importing them works.
@@ -670,4 +677,6 @@ module.exports = function(webpackEnv) {
     // our own hints via the FileSizeReporter
     performance: false,
   };
+
+  return configOverwrite ? configOverwrite(config, webpackEnv) : config;
 };
