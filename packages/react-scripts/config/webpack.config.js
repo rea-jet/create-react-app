@@ -761,12 +761,16 @@ module.exports = function (webpackEnv) {
             include: [
               { file: '../**/src/**/*.{ts,tsx}' },
               { file: '**/src/**/*.{ts,tsx}' },
+              { file: '../../node_modules/@rea-jet/**/*.{ts,tsx}' },
+              { file: './node_modules/@rea-jet/**/*.{ts,tsx}' },
             ],
             exclude: [
               { file: '**/src/**/__tests__/**' },
               { file: '**/src/**/?(*.){spec|test}.*' },
               { file: '**/src/setupProxy.*' },
               { file: '**/src/setupTests.*' },
+              { file: '../../node_modules/@rea-jet/**/?(*.)(spec|test).*' },
+              { file: './node_modules/@rea-jet/**/?(*.)(spec|test).*' },
             ],
           },
           logger: {
