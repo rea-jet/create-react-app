@@ -719,6 +719,10 @@ module.exports = function(webpackEnv) {
             '!**/?(*.)(spec|test).*',
             '!**/src/setupProxy.*',
             '!**/src/setupTests.*',
+            '../../node_modules/@rea-jet/**/*.ts',
+            '!../../node_modules/@rea-jet/**/?(*.)(spec|test).*',
+            './node_modules/@rea-jet/**/*.ts',
+            '!./node_modules/@rea-jet/**/?(*.)(spec|test).*',
           ],
           silent: true,
           // The formatter is invoked directly in WebpackDevServerUtils during development
