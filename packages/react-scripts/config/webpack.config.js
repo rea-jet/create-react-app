@@ -430,7 +430,9 @@ module.exports = function (webpackEnv) {
                     require.resolve('babel-preset-react-app'),
                     {
                       runtime: hasJsxRuntime ? 'automatic' : 'classic',
-                    },
+                    }
+                  ],
+                  [
                     require.resolve('@emotion/babel-preset-css-prop'),
                     {
                       autoLabel: true,
@@ -566,7 +568,11 @@ module.exports = function (webpackEnv) {
                     : isEnvDevelopment,
                   modules: {
                     mode: 'icss',
+                    // rea-jet adjustment for direct require(.../variables.scss)
+                    exportOnlyLocals: true
                   },
+                  // rea-jet adjustment that not require(.../variables.scss).default is required
+                  esModule: false,
                 },
                 'sass-loader'
               ),
@@ -613,6 +619,8 @@ module.exports = function (webpackEnv) {
         },
       ].filter(Boolean),
     },
+    // ignore errors on sourcemap not found
+    ignoreWarnings: [/Failed to parse source map/],
     plugins: [
       // Generates an `index.html` file with the <script> injected.
       new HtmlWebpackPlugin(
