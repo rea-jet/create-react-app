@@ -771,6 +771,7 @@ module.exports = function (webpackEnv) {
               { file: '**/src/**/*.{ts,tsx}' },
               { file: '../../node_modules/@rea-jet/**/*.{ts,tsx}' },
               { file: './node_modules/@rea-jet/**/*.{ts,tsx}' },
+              { file: '../../modules/**/src/**/*.{ts,tsx}' },
             ],
             exclude: [
               { file: '**/src/**/__tests__/**' },
@@ -779,6 +780,7 @@ module.exports = function (webpackEnv) {
               { file: '**/src/setupTests.*' },
               { file: '../../node_modules/@rea-jet/**/?(*.)(spec|test).*' },
               { file: './node_modules/@rea-jet/**/?(*.)(spec|test).*' },
+              { file: '../../modules/**/src/**/?(*.)(spec|test).*' },
             ],
           },
           logger: {
