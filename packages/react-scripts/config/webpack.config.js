@@ -711,14 +711,26 @@ module.exports = function (webpackEnv) {
           };
         },
       }),
-      // Moment.js is an extremely popular library that bundles large locale files
-      // by default due to how webpack interprets its code. This is a practical
-      // solution that requires the user to opt into importing specific locales.
-      // https://github.com/jmblog/how-to-optimize-momentjs-with-webpack
-      // You can remove this if you don't use Moment.js:
       new webpack.IgnorePlugin({
-        resourceRegExp: /^\.\/locale$/,
-        contextRegExp: /moment$/,
+        checkResource: (resource, context) => {
+          // Moment.js is an extremely popular library that bundles large locale files
+          // by default due to how webpack interprets its code. This is a practical
+          // solution that requires the user to opt into importing specific locales.
+          // https://github.com/jmblog/how-to-optimize-momentjs-with-webpack
+          // You can remove this if you don't use Moment.js:
+          if (/\.\/locale/.test(resource) && /moment/.test(context)) {
+            return true;
+          }
+
+          // rm all specs from bundles
+          if (/__tests__/.test(context)) {
+            return true;
+          }
+          if (/\.spec$/.test(resource)) {
+            return true;
+          }
+          return false;
+        }
       }),
       // Generate a service worker script that will precache, and keep up to date,
       // the HTML & assets that are part of the webpack build.
