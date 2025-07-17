@@ -31,6 +31,9 @@ module.exports = (resolve, rootDir, isEjecting) => {
       isEjecting
         ? 'react-app-polyfill/jsdom'
         : require.resolve('react-app-polyfill/jsdom'),
+      resolve(
+        'config/jest/encoder.polyfill.js'
+      )
     ],
 
     setupFilesAfterEnv: setupTestsFile ? [setupTestsFile] : [],
